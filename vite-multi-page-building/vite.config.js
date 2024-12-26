@@ -11,8 +11,8 @@ export default defineConfig({
   publicDir: '../public', // publicDir в корне проекта
   build: {
     outDir: '../dist', // Выходная папка dist на уровне проекта
-    minify: 'esbuild', // Минификация JavaScript
-    cssMinify: 'lightningcss', // Минификация CSS с помощью lightningcss
+    minify: true,
+    cssMinify: true,
     sourcemap: true,
     rollupOptions: {
       input: {
