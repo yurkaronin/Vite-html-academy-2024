@@ -587,3 +587,5 @@ index.html
 ## Остановился на 2.8. Задание: пишем сборку многостраничного сайта на Vite
 
 https://up.htmlacademy.ru/vite/1/tasks/2
+
+vite-multi-page-building

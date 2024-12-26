@@ -82,7 +82,62 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
 
-.title {
-  font-size: 65px !important;
+.wrapper {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.image {
+  img {
+    max-width: 500px;
+  }
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  svg {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.main-nav {
+  ol {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 32px;
+    grid-template-columns: repeat(3, 1fr);
+    max-width: max-content;
+    margin: 0 auto;
+  }
+
+  a {
+    display: flex;
+    max-width: max-content;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 600;
+    color: #ffffff;
+  }
 }
