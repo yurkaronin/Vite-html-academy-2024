@@ -1,3 +1,3 @@
-import '../css/style.scss'; // Подключение глобальных стилей
+// import '../css/style.scss'; // Подключение глобальных стилей
 
-import './modules/support'; // Модули JS 
+import './modules/support'; // Модули JS

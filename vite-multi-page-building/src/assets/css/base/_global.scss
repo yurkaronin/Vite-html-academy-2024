@@ -1,0 +1,91 @@
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  height: 100%;
+  scrollbar-gutter: stable;
+  scroll-padding-top: var(--header-height);
+}
+
+html *,
+html *::before,
+html *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 375px;
+  position: relative;
+  overflow-x: hidden;
+  font-style: normal;
+  line-height: 1.3;
+  max-width: 100%;
+  width: 100%;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  color: #131417;
+  background-color: #ffffff;
+
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+  display: block;
+}
+
+figure {
+  margin-inline: 0;
+}
+
+input,
+textarea,
+a,
+select,
+button {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+}
+
+input,
+textarea {
+  max-width: 100%;
+  width: 100%;
+}
+
+a {
+  font-family: inherit;
+  font-style: inherit;
+}
+
+address {
+  font-style: normal;
+  font-family: inherit;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+// Запрещаем изменение размеров текстового поля
+textarea {
+  resize: none;
+}
+
+// Чиним баг задержки смены цвета при взаимодействии с svg-элементами
+svg * {
+  transition-property: fill, stroke;
+}
+
+// отключаем ненужные элементы навигации на яндекс картах
+[class*="copyrights-pane"] {
+  display: none !important;
+}

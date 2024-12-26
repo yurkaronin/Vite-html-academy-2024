@@ -1,22 +1,17 @@
 import { defineConfig } from 'vite';
 import createSvgSpritePlugin from 'vite-plugin-svg-spriter';
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
-
-import viteImagemin from 'vite-plugin-imagemin'; // Не обязательный функционал
-import imageminWebp from 'imagemin-webp'; // Не обязательный функционал
-
-
-import {resolve} from 'path'; //Импортируем функцию resolve из модуля path. Функция resolve используется для преобразования относительных путей в абсолютные пути.
+import { resolve } from 'path';
 
 const SRC_PATH = resolve(__dirname, 'src');
-const SVG_FOLDER_PATH = resolve(SRC_PATH, 'assets', 'svg'); // Папка с SVG-иконками
+const SVG_FOLDER_PATH = resolve(SRC_PATH, 'assets', 'svg');
 
 export default defineConfig({
   root: 'src', // Рабочая папка — src
-  publicDir: '../public', // publicDir в корне проекта, если он находится на уровне src
+  publicDir: '../public', // publicDir в корне проекта
   build: {
     outDir: '../dist', // Выходная папка dist на уровне проекта
-    minify: 'esbuild', // Минификация JavaScript (по умолчанию)
+    minify: 'esbuild', // Минификация JavaScript
     cssMinify: 'lightningcss', // Минификация CSS с помощью lightningcss
     sourcemap: true,
     rollupOptions: {
@@ -28,7 +23,7 @@ export default defineConfig({
     },
   },
   plugins: [
-    // оптимизация изображений с помощью ViteImageOptimizer
+    // Оптимизация изображений с помощью ViteImageOptimizer
     ViteImageOptimizer({
       jpg: {
         quality: 75, // Оптимизация JPEG
@@ -39,42 +34,13 @@ export default defineConfig({
       // Генерация WebP из JPEG и PNG
       webp: {
         quality: 75, // Установите качество для WebP
+        method: 6,   // Метод сжатия для WebP (от 0 до 6)
+        alphaQuality: 90,  // Качество для прозрачных PNG
       },
     }),
     createSvgSpritePlugin({
       svgFolder: SVG_FOLDER_PATH, // Путь к папке с SVG-иконками
       symbolId: 'icon-[name]', // ID для каждого символа
-    }),
-    viteImagemin({
-      gifsicle: {
-        optimizationLevel: 7,
-        interlaced: false,
-      },
-      optipng: {
-        optimizationLevel: 7,
-      },
-      mozjpeg: {
-        quality: 75, // Оптимизация для JPEG
-      },
-      pngquant: {
-        quality: [0.65, 0.9],
-        speed: 4,
-      },
-      svgo: {
-        plugins: [
-          {
-            name: 'removeViewBox',
-          },
-          {
-            name: 'removeEmptyAttrs',
-            active: false,
-          },
-        ],
-      },
-      // Настройки для WebP
-      webp: imageminWebp({
-        quality: 75, // качество изображения WebP
-      }),
     }),
   ],
 });
